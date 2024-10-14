@@ -49,12 +49,12 @@ function App() {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', minHeight: '100vh' }}>
       <h1 style={{ marginBottom: '20px' }}>Books-Mixer AI</h1>
       <img 
         src="books_mixer_ai.png" 
         alt="Books-Mixer AI Logo" 
-        style={{ width: '200px', marginBottom: '10px' }} 
+        style={{ width: '200px', marginBottom: '20px' }} 
       />
       <div style={{ width: '100%', maxWidth: '800px', height: '500px', marginBottom: '20px' }}>
         <MainContainer>
@@ -90,8 +90,40 @@ function App() {
           </ChatContainer>
         </MainContainer>
       </div>
-
+      
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '400px' }}>
+      <div style={{ marginTop: 'auto', display: 'flex', gap: '20px' }}>
+        <a 
+          href="https://astrabert.github.io/books-mixer-ai" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#2596be',
+            color: 'white',
+            textDecoration: 'none',
+            borderRadius: '5px',
+            fontWeight: 'bold'
+          }}
+        >
+          Docs
+        </a>
+        <a 
+          href="https://github.com/sponsors/AstraBert" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{
+            padding: '10px 20px',
+            backgroundColor: '#2596be',
+            color: 'white',
+            textDecoration: 'none',
+            borderRadius: '5px',
+            fontWeight: 'bold'
+          }}
+        >
+          Donate
+        </a>
+      </div>
         <input 
           type="text" 
           placeholder="OpenAI API Key" 
@@ -121,6 +153,8 @@ function App() {
           style={{ margin: '10px', width: '100%', padding: '5px' }}
         />
       </div>
+
+      
     </div>
   );
 }
