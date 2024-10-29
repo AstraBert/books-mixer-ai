@@ -1,7 +1,7 @@
-import generateMix from "./chatOpenaiMix.js";  // Adjust the import paths as necessary 
-import generatePrompt from "./chatOpenaiPrompt.js";  // Adjust the import paths as necessary
-import searchWikipedia from "./fetchWikipedia.js";  // Adjust the import paths as necessary
-import generateImage from "./imageGeneration.js";  // Adjust the import paths as necessary
+import generateMix from "./chatOpenaiMix.js";
+import generatePrompt from "./chatOpenaiPrompt.js"; 
+import searchWikipedia from "./fetchWikipedia.js"; 
+import generateImage from "./imageGeneration.js";  
 
 // Function to combine book summaries and return the mixed plot
 async function combineBookSummaries(book1, book2, additionalInstructions, apiKeyOpenAI) {
@@ -44,7 +44,7 @@ export async function generatePlotImage(book1, book2, additionalInstructions, ap
         console.log("Image prompt: ", result.imGenPrompt);
 
         const imageUrl = await generateImage(apiKeyImage, result.imGenPrompt);
-        
+
         return { bookmix: result.bookmix, imageUrl };
     } catch (error) {
         console.error("Error in generatePlotImage:", error);

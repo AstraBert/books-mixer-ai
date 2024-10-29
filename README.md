@@ -96,7 +96,7 @@ The application should be running on http://localhost:3000 in less than a minute
 
 ### Contribute
 
-Follow the contribution guidelines you can find in [CONTRIBUTING.md](./CONTRIBUTE.md)
+Follow the contribution guidelines you can find in [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ### Support the project
 

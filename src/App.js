@@ -36,7 +36,7 @@ function App() {
         ...prevMessages,
         { sender: 'Zoe', text: `Here is the mixed plot:\n${bookmix}` },
         { sender: 'Zoe', text: `Here is the generated thumbnail for the new story:` },
-        { sender: 'Zoe', text: `<img src='${imageUrl}' alt='Mixed story plot thumbnail'>` }
+        { sender: 'Zoe', text: `<img src='${imageUrl}' alt='Mixed story plot thumbnail'>` },
       ]);
 
     } catch (error) {
