@@ -4,6 +4,7 @@ WORKDIR /books-mixer-ai/
 COPY ./public /books-mixer-ai/public
 COPY ./src /books-mixer-ai/src
 COPY ./package.json /books-mixer-ai/
+COPY ./.env /books-mixer-ai/
 
 RUN npm install
 
