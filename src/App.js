@@ -1,9 +1,9 @@
 import './index.css'
 import { useState, useEffect } from 'react'
 import { createClient } from '@supabase/supabase-js'
-import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { HomePage } from './homePage'
+import CustomAuth from './customAuth'
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL
 const supabaseAnonKey = process.env.REACT_APP_SUPABASE_ANON_KEY
@@ -28,8 +28,8 @@ export default function App() {
   }, [])
 
   if (!session) {
-    return (<Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} />)
+    return <CustomAuth supabaseClient={supabase} />
   } else {
-    return (<HomePage supabase={supabase} />)
+    return <HomePage supabase={supabase} />
   }
 }

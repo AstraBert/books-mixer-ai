@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Analytics } from "@vercel/analytics/react";
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, Avatar } from '@chatscope/chat-ui-kit-react';
-import { generatePlotImage } from './fullStuff';  // Import the main function
+import { generatePlotImage } from './fullStuff';
 
 export const HomePage = ({ supabase }) => {
   const [messages, setMessages] = useState([]);
@@ -11,6 +11,15 @@ export const HomePage = ({ supabase }) => {
   const [book1, setBook1] = useState('');
   const [book2, setBook2] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleSignOut = async () => {
+    try {
+      const { error } = await supabase.auth.signOut();
+      if (error) throw error;
+    } catch (error) {
+      console.error('Error signing out:', error.message);
+    }
+  };
 
   const handleSend = async (messageText) => {
     if (!openaiKey || !imageKey || !book1 || !book2) {
@@ -57,7 +66,26 @@ export const HomePage = ({ supabase }) => {
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', minHeight: '100vh' }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px', minHeight: '100vh', position: 'relative' }}>
+      {/* Sign Out Button */}
+      <button
+        onClick={handleSignOut}
+        style={{
+          position: 'absolute',
+          top: '20px',
+          right: '20px',
+          padding: '10px 20px',
+          backgroundColor: '#2596be',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          fontWeight: 'bold'
+        }}
+      >
+        Sign Out
+      </button>
+
       <h1 style={{ marginBottom: '20px' }}>Books-Mixer AI</h1>
       <img 
         src="books_mixer_ai.png" 
@@ -100,38 +128,38 @@ export const HomePage = ({ supabase }) => {
       </div>
       
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '400px' }}>
-      <div style={{ marginTop: 'auto', display: 'flex', gap: '20px' }}>
-        <a 
-          href="https://astrabert.github.io/books-mixer-ai" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          style={{
-            padding: '10px 20px',
-            backgroundColor: '#2596be',
-            color: 'white',
-            textDecoration: 'none',
-            borderRadius: '5px',
-            fontWeight: 'bold'
-          }}
-        >
-          Docs
-        </a>
-        <a 
-          href="https://github.com/sponsors/AstraBert" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          style={{
-            padding: '10px 20px',
-            backgroundColor: '#2596be',
-            color: 'white',
-            textDecoration: 'none',
-            borderRadius: '5px',
-            fontWeight: 'bold'
-          }}
-        >
-          Donate
-        </a>
-      </div>
+        <div style={{ marginTop: 'auto', display: 'flex', gap: '20px' }}>
+          <a 
+            href="https://astrabert.github.io/books-mixer-ai" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{
+              padding: '10px 20px',
+              backgroundColor: '#2596be',
+              color: 'white',
+              textDecoration: 'none',
+              borderRadius: '5px',
+              fontWeight: 'bold'
+            }}
+          >
+            Docs
+          </a>
+          <a 
+            href="https://github.com/sponsors/AstraBert" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{
+              padding: '10px 20px',
+              backgroundColor: '#2596be',
+              color: 'white',
+              textDecoration: 'none',
+              borderRadius: '5px',
+              fontWeight: 'bold'
+            }}
+          >
+            Donate
+          </a>
+        </div>
         <input 
           type="text" 
           placeholder="OpenAI API Key" 
@@ -161,8 +189,6 @@ export const HomePage = ({ supabase }) => {
           style={{ margin: '10px', width: '100%', padding: '5px' }}
         />
       </div>
-
-      
     </div>
   );
 }
